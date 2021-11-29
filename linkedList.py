@@ -131,27 +131,87 @@ linked_list.out()
 
 
 # 2 пример
-# class Node:
-#     def __init__(self, data):
-#         self.data = data
-#         self.next = None
-#
-#     def append(self, val):
-#         end = Node(val)
-#         n = self
-#         while (n.next):
-#             n = n.next
-#         n.next = end
-#
-# ll = Node(1)
-# ll.append(2)
-# ll.append(3)
-#
-# node = ll
-# print(node.data)
-# while node.next:
-#     node = node.next
-#     print(node.data)
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+    def append(self, val):
+        end = Node(val)
+        n = self
+        while (n.next):
+            n = n.next
+        n.next = end
+
+
+ll = Node(1)
+ll.append(2)
+ll.append(3)
+
+node = ll
+print(node.data)
+while node.next:
+    node = node.next
+    print(node.data)
+
+
+# 3 пример
+class Node:
+    def __init__(self, data):
+        self.item = data # значение
+        self.next = None # ссылка
+
+
+class LinkedList:
+    def __init__(self):
+        self.start_node = None
+
+    def traverse_list(self):
+        if self.start_node is None:
+            print("List has no element")
+            return
+        else:
+            n = self.start_node
+            while n is not None:
+                print(n.item, " ")
+                n = n.next
+
+    # вставка элемента в начале
+    # data - значение элемента, который необходимо вставить
+    def insert_at_start(self, data):
+        new_node = Node(data)
+        new_node.next = self.start_node
+        self.start_node = new_node
+
+    # вставка элемента в конце
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        if self.start_node is None:
+            self.start_node = new_node
+            return
+        n = self.start_node
+        while n.next is not None:
+            n = n.next
+        n.next = new_node
+
+
+ll = LinkedList()
+ll.traverse_list()
+print('\n')
+
+ll.insert_at_end(20)
+ll.insert_at_end(30)
+ll.insert_at_end(40)
+ll.traverse_list()
+
+ll.insert_at_start(50)
+ll.insert_at_start(60)
+print('\n')
+ll.traverse_list()
+
+
+
+
 
 
 
